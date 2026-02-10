@@ -1,0 +1,60 @@
+/* Hero – only slider transition + slide backgrounds + dot (Bootstrap for layout/typography/buttons) */
+
+.min-vh-50 {
+  min-height: 50vh;
+}
+
+.hero-slider__sizer {
+  display: block;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.hero-slider__track {
+  display: block;
+  overflow: hidden;
+}
+
+.hero-slide {
+  transition: transform 0.8s ease;
+  height: 100%;
+}
+
+.hero-slide--prev {
+  transform: translateX(-100%);
+}
+
+.hero-slide--active {
+  transform: translateX(0);
+  z-index: 1;
+}
+
+.hero-slide--next {
+  transform: translateX(100%);
+}
+
+.hero-slide__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Dots below slider */
+.hero-dots {
+  padding-bottom: 0.25rem;
+}
+
+.hero-dot {
+  background-color: rgba(3, 45, 110, 0.3);
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.hero-dot:hover {
+  background-color: rgba(3, 45, 110, 0.5);
+}
+
+.hero-dot--active {
+  background-color: var(--color-primary);
+  transform: scale(1.15);
+}

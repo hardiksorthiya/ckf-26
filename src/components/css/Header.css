@@ -11,16 +11,9 @@
 
 /* Navbar */
 .header-navbar {
-  background: #DCE6E7 !important;
+  background: var(--color-body-bg-secondary) !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   padding: 0.5rem 0;
-}
-
-.header-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 .header-brand {
@@ -87,6 +80,11 @@
   background: rgba(221, 107, 32, 0.1);
 }
 
+.header-nav .nav-link.active:hover,
+.header-dropdown.active .dropdown-toggle:hover {
+  color: var(--header-orange-hover) !important;
+}
+
 .header-dropdown .dropdown-menu {
   border: none;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
@@ -101,7 +99,7 @@
 
 .header-dropdown .dropdown-item:hover {
   background: rgba(221, 107, 32, 0.1);
-  color: var(--header-orange);
+  color: var(--header-orange-hover);
 }
 
 /* Contact Us button */
@@ -208,7 +206,7 @@
 }
 
 .header-sidebar-close:hover {
-  color: var(--header-orange);
+  color: var(--header-orange-hover);
 }
 
 .header-sidebar-nav {
@@ -233,6 +231,10 @@
 .header-sidebar-nav .nav-link.active {
   background: rgba(221, 107, 32, 0.12);
   color: var(--header-orange) !important;
+}
+
+.header-sidebar-nav .nav-link.active:hover {
+  color: var(--header-orange-hover) !important;
 }
 
 .header-sidebar-footer {

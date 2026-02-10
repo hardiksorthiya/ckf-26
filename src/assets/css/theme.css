@@ -2,9 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 :root {
-  --color-primary: #0d6efd;
+  --color-primary: #032D6E;
+  --color-primary-hover: #F58020;
   --color-body: #212529;
   --color-body-bg: #fff;
+  --color-body-bg-secondary: #DCE6E7;
   --font-sans: 'Rubik', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -28,4 +30,57 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Primary button – pill shape, dark blue, green border, soft shadow */
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  color: #fff;
+  background-color: var(--color-primary);
+  border: 1.5px solid #166534;
+  border-radius: 9999px;
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.primary-btn:hover {
+  color: #fff;
+  background-color: var(--color-primary-hover);
+  box-shadow: 3px 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.primary-btn .primary-btn__icon {
+  flex-shrink: 0;
+}
+
+.text-primary-color {
+  color: var(--color-primary);
+}
+
+.bg-hp-sorath {
+  background-color: var(--color-body-bg-secondary);
+}
+
+.br-30-hp{
+  border-radius: 30px;
+}
+.py-80-hp{
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+@media (max-width: 992px) {
+.py-lg-10-hp{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }

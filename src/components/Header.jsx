@@ -43,7 +43,7 @@ function Header() {
   return (
     <>
       <Navbar className="header-navbar" expand="lg" variant="light">
-        <Container fluid className="header-container">
+        <Container className="header-container">
           <Navbar.Brand as={NavLink} to="/" className="header-brand">
             <Logo />
           </Navbar.Brand>
