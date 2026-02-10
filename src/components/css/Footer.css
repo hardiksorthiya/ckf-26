@@ -1,0 +1,257 @@
+/* Footer – matches design: CTA strip, main columns, dark bottom strip */
+
+.footer {
+  margin-top: auto;
+}
+
+/* Shared colors (align with header) */
+.footer-cta,
+.footer-main {
+  background-color: #DCE6E7;
+}
+
+.footer-bottom {
+  background-color: #032D6E;
+}
+
+/* ----- Upper CTA section ----- */
+.footer-cta {
+  padding: 1.5rem 0;
+}
+
+.footer-cta .row {
+  justify-content: space-between;
+}
+
+.footer-cta-text-wrap {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 992px) {
+  .footer-cta-text-wrap {
+    margin-bottom: 0;
+  }
+}
+
+.footer-cta-text {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #032D6E;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-cta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid #032D6E;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.footer-cta-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.footer-cta-btn-wrap {
+  display: flex;
+  justify-content: flex-start;
+}
+
+@media (min-width: 992px) {
+  .footer-cta-btn-wrap {
+    justify-content: flex-end;
+  }
+}
+
+.footer-btn-consultation {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #032D6E;
+  color: #fff !important;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(3, 45, 110, 0.3);
+}
+
+.footer-btn-consultation:hover {
+  background-color: #052a6b;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.footer-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ----- Main footer content ----- */
+.footer-main {
+  padding: 2.5rem 0;
+}
+
+.footer-brand {
+  max-width: 260px;
+}
+
+.footer-logo-img {
+  height: 42px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.footer-desc {
+  font-size: 0.9375rem;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer-heading {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #032D6E;
+  margin-bottom: 1rem;
+  text-transform: none;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: #333;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #032D6E;
+}
+
+.footer-contact {
+  font-style: normal;
+  margin: 0;
+}
+
+.footer-contact p {
+  margin: 0 0 0.5rem;
+  font-size: 0.9375rem;
+  color: #333;
+}
+
+.footer-address {
+  line-height: 1.5;
+}
+
+.footer-tel a,
+.footer-email a {
+  color: #032D6E;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.footer-tel a:hover,
+.footer-email a:hover {
+  color: #052a6b;
+  text-decoration: underline;
+}
+
+/* ----- Bottom strip ----- */
+.footer-bottom {
+  padding: 1rem 0;
+}
+
+.footer-iso-wrap {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .footer-iso-wrap {
+    margin-bottom: 0;
+  }
+}
+
+.footer-iso-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  background: #fff;
+  color: #032D6E;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.footer-iso-title {
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+.footer-iso-num {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+}
+
+.footer-iso-cert {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  margin-top: 0.15rem;
+}
+
+.footer-social-wrap {
+  display: flex;
+  justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .footer-social-wrap {
+    justify-content: flex-end;
+  }
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-social-link {
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.footer-social-link:hover {
+  color: #fff;
+  opacity: 0.85;
+}
