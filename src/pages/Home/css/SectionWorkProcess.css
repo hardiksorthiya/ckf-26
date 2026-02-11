@@ -1,0 +1,145 @@
+/* Section: Our Work Process */
+
+.section-work-process {
+  background: #fff;
+}
+
+.section-work-process__subheading {
+  font-size: 18px;
+  font-weight: 400;
+  color: #161632;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.section-work-process__title {
+  line-height: 1.3;
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 500;
+  color: var(--color-primary);
+  margin: 0;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  max-width: 630px;
+}
+
+.section-work-process__subtitle {
+  font-size: 0.9375rem;
+  color: #374151;
+  margin: 0;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Steps wrapper - for positioning arrows */
+.section-work-process__steps-wrap {
+  margin-top: 2rem;
+}
+
+.section-work-process__step-col {
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-work-process__step-col {
+    margin-bottom: 0;
+  }
+}
+
+/* Single step block */
+.section-work-process__step {
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+/* Pentagon container */
+.section-work-process__pentagon-wrap {
+  width: 140px;
+  height: 120px;
+  margin: 0 auto 1.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-work-process__pentagon-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.section-work-process__pentagon-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-work-process__pentagon-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.section-work-process__step-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin: 0 0 0.75rem;
+  line-height: 1.3;
+}
+
+.section-work-process__step-desc {
+  font-size: 0.875rem;
+  color: #161632;
+  line-height: 1.6;
+}
+
+/* Curved arrows between steps */
+.section-work-process__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 90px;
+  height: 37px;
+  pointer-events: none;
+}
+
+.section-work-process__arrow-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.section-work-process__arrow-path {
+  fill: var(--color-primary);
+}
+
+.section-work-process__arrow--1 {
+  left: calc(33.333% - 40px);
+}
+
+.section-work-process__arrow--2 {
+  left: calc(66.666% - 460px);
+}
+
+@media (min-width: 768px) {
+  .section-work-process__arrow {
+    width: 90px;
+    height: 40px;
+  }
+
+  .section-work-process__arrow--1 {
+    left: calc(33.333% - 40px);
+  }
+
+  .section-work-process__arrow--2 {
+    left: calc(66.666% - 40px);
+  }
+}

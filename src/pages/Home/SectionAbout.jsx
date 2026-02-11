@@ -6,7 +6,7 @@ import aboutShape from '../../assets/images/home/about_shape 1.svg';
 
 function SectionAbout() {
   return (
-    <section className="section-about py-5">
+    <section className="section-about pt-5">
       <div className="section-about__wrap">
         <Row className="align-items-center g-4 g-lg-5">
           <Col md={6} lg={6} className="section-about__visual order-2 order-md-1 ps-lg-0 mt-0">

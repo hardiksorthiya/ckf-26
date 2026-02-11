@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import './css/SectionServices.css';
 import mapSvg from '../../assets/images/home/world-map.svg';
@@ -5,30 +6,71 @@ import servicesCloudIcon from '../../assets/images/home/service.png';
 
 // Inner circle (4 items): Protect & Backup, Business Hosting, Cloud, (one more)
 const innerCircleServices = [
-  { label: 'Protect & Backup', color: 'green', icon: 'shield', angle: -135 }, // top-left
-  { label: 'Business Hosting', color: 'red', icon: 'building', angle: -45 }, // top-right
-  { label: 'Cloud', color: 'purple-light', icon: 'cloud', angle: 45 }, // bottom-right
-  { label: 'AI', color: 'red', icon: 'ai', angle: 135 }, // bottom-left
+  { label: 'Protect & Backup', color: 'green', icon: 'shield', angle: -100 }, // top-left
+  { label: 'Business Hosting', color: 'red', icon: 'building', angle: -28 }, // top-right
+  { label: 'Cloud', color: 'purple-light', icon: 'cloud', angle: 25 }, // bottom-right
+  { label: 'AI', color: 'red', icon: 'ai', angle: 76 }, // bottom-left
 ];
 
 // Outer circle (5 items): Fast Deployment, VPS, Email, Graphics, Marketing
 const outerCircleServices = [
   { label: 'Fast Deployment', color: 'red', icon: 'deploy', angle: -90 }, // top
   { label: 'VPS', color: 'purple', icon: 'servers', angle: -54 }, // 
-  { label: 'Email', color: 'red', icon: 'envelope', angle: -18 }, // top-right
+  { label: 'Email', color: 'red', icon: 'envelope', angle: -5 }, // top-right
   { label: 'Graphics', color: 'purple-light', icon: 'palette', angle: 54 }, // opposite VPS (-54° + 180° = 126°)
-  { label: 'Marketing', color: 'green', icon: 'megaphone', angle: 90 }, // opposite Fast Deployment (-90° + 180° = 90°)
+  { label: 'Marketing', color: 'green', icon: 'megaphone', angle: 100 }, // opposite Fast Deployment (-90° + 180° = 90°)
 ];
 
 const stats = [
-  { value: '120+', label: 'Customers', bg: 'green' },
-  { value: '120+', label: 'Customers', bg: 'orange' },
-  { value: '120+', label: 'Customers', bg: 'blue' },
+  { value: 120, suffix: '+', label: 'Customers', bg: 'green' },
+  { value: 120, suffix: '+', label: 'Customers', bg: 'orange' },
+  { value: 120, suffix: '+', label: 'Customers', bg: 'blue' },
 ];
 
 const subtitle = 'If you are planning on developing a product landing';
 
+function CounterValue({ target, suffix = '', run }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!run) return;
+    const duration = 2000;
+    const steps = 60;
+    const stepDuration = duration / steps;
+    const increment = target / steps;
+    let current = 0;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, stepDuration);
+    return () => clearInterval(timer);
+  }, [run, target]);
+
+  return <>{count}{suffix}</>;
+}
+
 function SectionServices() {
+  const communityRef = useRef(null);
+  const [countersVisible, setCountersVisible] = useState(false);
+
+  useEffect(() => {
+    const el = communityRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setCountersVisible(true);
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
     <section className="section-services py-5">
@@ -124,18 +166,26 @@ function SectionServices() {
       </Container>
     </section>
 
-    <section className="section-services py-5">
+    <section className="section-community pb-5" ref={communityRef}>
       <Container>
-        {/* Bottom: Join our global community + stats */}
-        <div className="section-services__bottom text-center">
-          <h2 className="section-services__title mb-2">Join our global community</h2>
-          <p className="section-services__subtitle mb-4 mb-lg-5">{subtitle}</p>
+        <div className="section-community__inner position-relative">
+          {/* Dotted background patterns */}
+          <div className="section-community__dots section-community__dots--left" aria-hidden />
+          <div className="section-community__dots section-community__dots--right" aria-hidden />
+          {/* Header */}
+          <div className="text-center mb-4 mb-lg-5">
+            <h2 className="section-community__title mb-2">Join our global community</h2>
+            <p className="section-community__subtitle mb-0">{subtitle}</p>
+          </div>
+          {/* Stats row - Bootstrap grid */}
           <Row className="g-3 g-md-4 justify-content-center">
             {stats.map((item) => (
-              <Col key={item.bg} xs={12} sm={6} md={4} lg={4}>
-                <div className={`section-services__card section-services__card--${item.bg}`}>
-                  <span className="section-services__card-value">{item.value}</span>
-                  <span className="section-services__card-label">{item.label}</span>
+              <Col key={item.bg} xs={12} sm={6} md={4}>
+                <div className={`section-community__card section-community__card--${item.bg} h-100 py-4 px-3 rounded-3 text-center d-flex align-items-center justify-content-around`}>
+                  <span className="section-community__value d-block mb-1">
+                    <CounterValue target={item.value} suffix={item.suffix} run={countersVisible} />
+                  </span>
+                  <span className="section-community__label d-block">{item.label}</span>
                 </div>
               </Col>
             ))}

@@ -26,7 +26,7 @@ section.section-services:after {
 
 .section-services__title {
   font-size: clamp(1.5rem, 3.5vw, 2.25rem);
-  font-weight: 700;
+  font-weight: 500;
   color: var(--color-primary);
   margin: 0;
 }
@@ -56,9 +56,14 @@ section.section-services:after {
 /* Center image placeholder */
 .section-services__center-image {
   position: absolute;
-  z-index: 1;
   width: 1052px;
   height: 1052px;
+}
+
+section.section-services__map {
+  margin-top: -30%;
+  margin-bottom: -8%;
+  z-index: 1;
 }
 
 .section-services__center-placeholder {
@@ -126,7 +131,6 @@ section.section-services:after {
 }
 
 .section-services__bubble:hover {
-  transform: scale(1.05) !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
@@ -209,4 +213,101 @@ section.section-services:after {
   .section-services__bubble-label {
     font-size: 0.6rem;
   }
+}
+
+/* Join our global community – bottom section */
+.section-community {
+  background: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+.section-community__inner {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-community__title {
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 500;
+  color: var(--color-primary);
+  margin: 0;
+  z-index: 1;
+  position: relative;
+}
+
+.section-community__subtitle {
+  font-size: 0.9375rem;
+  color: #374151;
+  margin: 0;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Dotted patterns – upper left and upper right */
+.section-community__dots {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.section-community__dots--left {
+  top: 0.5rem;
+  left: 0.5rem;
+  background: radial-gradient(circle at 30% 30%, var(--color-primary) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+}
+
+.section-community__dots--right {
+  top: 0.5rem;
+  right: 0.5rem;
+  background: radial-gradient(circle at 70% 30%, var(--color-primary) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+}
+
+@media (min-width: 576px) {
+  .section-community__dots {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/* Stat cards */
+.section-community__card {
+  min-height: 100px;
+  transition: transform 0.2s ease;
+}
+
+.section-community__card:hover {
+  transform: translateY(-2px);
+}
+
+.section-community__card--green {
+  background: #E0FFF1;
+  color: #166534;
+}
+
+.section-community__card--orange {
+  background: #FFF0ED;
+  color: #c2410c;
+}
+
+.section-community__card--blue {
+  background: #EFF1FF;
+  color: #1e40af;
+}
+
+.section-community__value {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.section-community__label {
+  font-size: 20px;
+  font-weight: 400;
+  color: inherit;
 }

@@ -1,0 +1,87 @@
+/* Section: Trusted Clients */
+
+.section-clients {
+  background: #fff;
+}
+
+/* Top area - white background, faded title */
+.section-clients__header {
+  background: #fff;
+  padding: 3rem 1rem 2rem;
+  text-align: center;
+}
+
+.section-clients__title {
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  font-weight: 700;
+  color: var(--color-body-bg-secondary);
+  margin: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Lower area - gradient background */
+.section-clients__gradient {
+  background: linear-gradient(
+    rgba(85, 149, 204, 0.8) 3%,
+    rgba(56, 216, 153, 0.15) 85%
+  );
+  width: 100%;
+}
+
+/* Marquee container */
+.section-clients__marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 2rem 0;
+  position: relative;
+  width: 100%;
+}
+
+.section-clients__gradient {
+  overflow: hidden;
+}
+
+.section-clients__marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 4rem;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+  padding-left: 100%;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.section-clients__card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.section-clients__card:hover {
+  transform: translateY(-2px);
+}
+
+/* Client logo images */
+.section-clients__logo-img {
+  max-height: 48px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.section-clients__card:hover .section-clients__logo-img {
+  transform: scale(1.1);
+}
