@@ -3,21 +3,21 @@ import './css/SectionServices.css';
 import mapSvg from '../../assets/images/home/world-map.svg';
 import servicesCloudIcon from '../../assets/images/home/service.png';
 
-// Inner circle (4 items): Fast Deployment, Protect & Backup, Business Hosting, Cloud
+// Inner circle (4 items): Protect & Backup, Business Hosting, Cloud, (one more)
 const innerCircleServices = [
-  { label: 'Fast Deployment', color: 'red', icon: 'deploy', angle: -135 }, // top-left
-  { label: 'Protect & Backup', color: 'green', icon: 'shield', angle: -45 }, // top-right
-  { label: 'Business Hosting', color: 'red', icon: 'building', angle: 45 }, // bottom-right
-  { label: 'Cloud', color: 'purple-light', icon: 'cloud', angle: 135 }, // bottom-left
+  { label: 'Protect & Backup', color: 'green', icon: 'shield', angle: -135 }, // top-left
+  { label: 'Business Hosting', color: 'red', icon: 'building', angle: -45 }, // top-right
+  { label: 'Cloud', color: 'purple-light', icon: 'cloud', angle: 45 }, // bottom-right
+  { label: 'AI', color: 'red', icon: 'ai', angle: 135 }, // bottom-left
 ];
 
-// Outer circle (5 items): Marketing, AI, Email, VPS, Graphics – evenly spaced (72° apart)
+// Outer circle (5 items): Fast Deployment, VPS, Email, Graphics, Marketing
 const outerCircleServices = [
-  { label: 'VPS', color: 'purple', icon: 'servers', angle: -90 }, // top
+  { label: 'Fast Deployment', color: 'red', icon: 'deploy', angle: -90 }, // top
+  { label: 'VPS', color: 'purple', icon: 'servers', angle: -54 }, // 
   { label: 'Email', color: 'red', icon: 'envelope', angle: -18 }, // top-right
-  { label: 'AI', color: 'red', icon: 'ai', angle: 54 }, // right
-  { label: 'Graphics', color: 'purple-light', icon: 'palette', angle: 126 }, // bottom-right
-  { label: 'Marketing', color: 'green', icon: 'megaphone', angle: 198 }, // bottom-left
+  { label: 'Graphics', color: 'purple-light', icon: 'palette', angle: 54 }, // opposite VPS (-54° + 180° = 126°)
+  { label: 'Marketing', color: 'green', icon: 'megaphone', angle: 90 }, // opposite Fast Deployment (-90° + 180° = 90°)
 ];
 
 const stats = [
@@ -63,9 +63,6 @@ function SectionServices() {
                 }}
               >
                 <span className="section-services__bubble-icon">
-                  {item.icon === 'deploy' && (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><path d="M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-                  )}
                   {item.icon === 'shield' && (
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                   )}
@@ -75,12 +72,15 @@ function SectionServices() {
                   {item.icon === 'cloud' && (
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
                   )}
+                  {item.icon === 'ai' && (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l1.6-1.6a1 1 0 0 0 0-1.4l-1.6-1.6a1 1 0 0 0-1.4 0l-1.6 1.6z"/><path d="M9.3 14.7a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l1.6-1.6a1 1 0 0 0 0-1.4l-1.6-1.6a1 1 0 0 0-1.4 0l-1.6 1.6z"/><path d="M6.3 9.3l1.6 1.6a1 1 0 0 0 1.4 0l1.6-1.6a1 1 0 0 0 0-1.4L9.3 6.3a1 1 0 0 0-1.4 0L6.3 7.9a1 1 0 0 0 0 1.4z"/><path d="M17.7 14.7l1.6 1.6a1 1 0 0 0 1.4 0l1.6-1.6a1 1 0 0 0 0-1.4l-1.6-1.6a1 1 0 0 0-1.4 0l-1.6 1.6a1 1 0 0 0 0 1.4z"/></svg>
+                  )}
                 </span>
                 <span className="section-services__bubble-label">{item.label}</span>
               </div>
             ))}
 
-            {/* Outer circle - 5 bubbles: Marketing, AI, Email, VPS, Graphics */}
+            {/* Outer circle - 5 bubbles: Fast Deployment, VPS, Email, Graphics, Marketing */}
             {outerCircleServices.map((item) => (
               <div
                 key={item.label}
@@ -90,14 +90,14 @@ function SectionServices() {
                 }}
               >
                 <span className="section-services__bubble-icon">
+                  {item.icon === 'deploy' && (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><path d="M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                  )}
                   {item.icon === 'servers' && (
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="2" y="2" width="20" height="8" rx="1"/><rect x="2" y="14" width="20" height="8" rx="1"/><path d="M6 6v0M6 18v0M12 6v0M12 18v0M18 6v0M18 18v0"/></svg>
                   )}
                   {item.icon === 'envelope' && (
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
-                  )}
-                  {item.icon === 'ai' && (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l1.6-1.6a1 1 0 0 0 0-1.4l-1.6-1.6a1 1 0 0 0-1.4 0l-1.6 1.6z"/><path d="M9.3 14.7a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l1.6-1.6a1 1 0 0 0 0-1.4l-1.6-1.6a1 1 0 0 0-1.4 0l-1.6 1.6z"/><path d="M6.3 9.3l1.6 1.6a1 1 0 0 0 1.4 0l1.6-1.6a1 1 0 0 0 0-1.4L9.3 6.3a1 1 0 0 0-1.4 0L6.3 7.9a1 1 0 0 0 0 1.4z"/><path d="M17.7 14.7l1.6 1.6a1 1 0 0 0 1.4 0l1.6-1.6a1 1 0 0 0 0-1.4l-1.6-1.6a1 1 0 0 0-1.4 0l-1.6 1.6a1 1 0 0 0 0 1.4z"/></svg>
                   )}
                   {item.icon === 'palette' && (
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="10.5" r="1.5"/><circle cx="13.5" cy="14.5" r="1.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.7-.1 2.5-.4"/></svg>
