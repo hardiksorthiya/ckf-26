@@ -19,7 +19,7 @@ const services = [
 
 function ServiceIcon({ type }) {
   const iconClass = `section-all-services__icon-wrap section-all-services__icon-wrap--${type}`;
-  const svgProps = { width: 32, height: 32, 'aria-hidden': true };
+  const svgProps = { width: 32, height: 32, 'aria-hidden': true, 'data-icon': type };
   switch (type) {
     case 'mobile':
       return (

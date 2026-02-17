@@ -10,8 +10,8 @@ const defaultDescription =
   'CloudKodeForm Technologies is a modern technology partner helping businesses build, scale, and secure their digital ecosystem.';
 
 const featuredPost = {
-  image: null,
-  imageAlt: 'Featured post',
+  image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=500&fit=crop&q=80',
+  imageAlt: 'Cloud solutions and technology',
   title: 'Building scalable cloud solutions for modern enterprises',
   excerpt: defaultDescription,
   author: 'Admin',
@@ -21,22 +21,22 @@ const featuredPost = {
 
 const recentPosts = [
   {
-    image: null,
-    imageAlt: 'Blog post',
+    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=400&fit=crop&q=80',
+    imageAlt: 'Cyber security and data protection',
     title: "What is cyber security a beginner's guide",
     author: 'Admin',
     href: '/blog/cyber-security',
   },
   {
-    image: null,
-    imageAlt: 'Blog post',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=400&fit=crop&q=80',
+    imageAlt: 'Cloud migration and technology',
     title: 'Best practices for cloud migration in 2025',
     author: 'Admin',
     href: '/blog/cloud-migration',
   },
   {
-    image: null,
-    imageAlt: 'Blog post',
+    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=400&fit=crop&q=80',
+    imageAlt: 'AI and machine learning technology',
     title: 'How AI is transforming software development',
     author: 'Admin',
     href: '/blog/ai-development',
@@ -45,8 +45,13 @@ const recentPosts = [
 
 function SectionBlog() {
   return (
-    <section className="section-blog py-5">
-      <Container>
+    <section className="section-blog py-5 position-relative">
+      {/* Splash images - decorative background elements */}
+      <div className="section-blog__splash section-blog__splash--1" aria-hidden />
+      <div className="section-blog__splash section-blog__splash--2" aria-hidden />
+      <div className="section-blog__splash section-blog__splash--3" aria-hidden />
+      
+      <Container className="position-relative">
         <div className="text-center mb-4 mb-lg-5 d-flex flex-column align-items-center justify-content-center">
           <p className="section-blog__subheading mb-2">{subheading}</p>
           <h2 className="section-blog__title mb-2">{mainTitle}</h2>

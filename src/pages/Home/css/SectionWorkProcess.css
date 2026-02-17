@@ -85,6 +85,128 @@
   width: 40px;
   height: 40px;
   flex-shrink: 0;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+/* GIF-like animations for icons */
+@keyframes pulseIconAnimation {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.9;
+  }
+}
+
+@keyframes rotateIconAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounceIconAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-4px);
+  }
+  75% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes glowIconAnimation {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px currentColor);
+    opacity: 1;
+  }
+  50% {
+    filter: drop-shadow(0 0 6px currentColor);
+    opacity: 0.95;
+  }
+}
+
+@keyframes floatIconAnimation {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes shakeIconAnimation {
+  0%, 100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-2px) rotate(-3deg);
+  }
+  75% {
+    transform: translateX(2px) rotate(3deg);
+  }
+}
+
+@keyframes waveIconAnimation {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-3px) rotate(-2deg);
+  }
+  75% {
+    transform: translateY(3px) rotate(2deg);
+  }
+}
+
+/* Planning icon - pulse + glow */
+.section-work-process__icon--planning {
+  animation: pulseIconAnimation 2s ease-in-out infinite, glowIconAnimation 2.5s ease-in-out infinite;
+}
+
+/* Development icon - rotate + pulse */
+.section-work-process__icon--development {
+  animation: rotateIconAnimation 4s linear infinite, pulseIconAnimation 2s ease-in-out infinite;
+}
+
+/* Testing icon - bounce + glow */
+.section-work-process__icon--testing {
+  animation: bounceIconAnimation 2s ease-in-out infinite, glowIconAnimation 2.2s ease-in-out infinite;
+}
+
+/* Pentagon wrapper floating animation */
+.section-work-process__pentagon-wrap {
+  animation: floatIconAnimation 3s ease-in-out infinite;
+}
+
+.section-work-process__step-col:nth-child(1) .section-work-process__pentagon-wrap {
+  animation-delay: 0s;
+}
+
+.section-work-process__step-col:nth-child(2) .section-work-process__pentagon-wrap {
+  animation-delay: 0.5s;
+}
+
+.section-work-process__step-col:nth-child(3) .section-work-process__pentagon-wrap {
+  animation-delay: 1s;
+}
+
+/* Hover effects */
+.section-work-process__step:hover .section-work-process__pentagon-icon {
+  animation: rotateIconAnimation 0.6s linear infinite, glowIconAnimation 0.5s ease-in-out infinite;
+  transform: scale(1.2);
+}
+
+.section-work-process__step:hover .section-work-process__pentagon-wrap {
+  animation-play-state: paused;
+  transform: translateY(-8px) scale(1.05);
 }
 
 .section-work-process__step-title {
@@ -119,6 +241,27 @@
 
 .section-work-process__arrow-path {
   fill: var(--color-primary);
+  transition: fill 0.3s ease;
+}
+
+/* Arrow animation */
+@keyframes arrowFlowAnimation {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(3px);
+  }
+}
+
+.section-work-process__arrow-svg {
+  animation: arrowFlowAnimation 2s ease-in-out infinite;
+}
+
+.section-work-process__arrow--2 .section-work-process__arrow-svg {
+  animation-delay: 0.5s;
 }
 
 .section-work-process__arrow--1 {

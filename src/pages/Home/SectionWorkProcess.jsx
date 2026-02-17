@@ -9,31 +9,64 @@ const defaultDescription =
   'CloudKodeForm Technologies is a modern technology partner helping businesses build, scale, and secure their digital ecosystem.';
 
 const steps = [
-  { title: 'Initiation & Planning', description: defaultDescription, variant: 'default' },
-  { title: 'Execution & Development', description: defaultDescription, variant: 'center' },
-  { title: 'Testing & Maintenance', description: defaultDescription, variant: 'default' },
+  { title: 'Initiation & Planning', description: defaultDescription, variant: 'default', iconType: 'planning' },
+  { title: 'Execution & Development', description: defaultDescription, variant: 'center', iconType: 'development' },
+  { title: 'Testing & Maintenance', description: defaultDescription, variant: 'default', iconType: 'testing' },
 ];
 
-function ProcessIcon({ variant }) {
+function ProcessIcon({ variant, iconType }) {
   const isCenter = variant === 'center';
   const color = isCenter ? '#7A9ABF' : '#64A8AE';
-  return (
-    <svg
-      className="section-work-process__pentagon-icon"
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke={color}
-      strokeWidth="1.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <rect x="12" y="6" width="24" height="36" rx="3" />
-      <circle cx="18" cy="16" r="1.5" fill={color} />
-      <path d="M22 16h8M18 21h12M18 26h8" />
-      <path d="M28 14l4-2v4l-4 2" />
-    </svg>
-  );
+  
+  const iconProps = {
+    className: `section-work-process__pentagon-icon section-work-process__icon--${iconType}`,
+    viewBox: "0 0 48 48",
+    fill: "none",
+    stroke: color,
+    strokeWidth: "1.2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    'data-icon': iconType,
+    'aria-hidden': true
+  };
+
+  switch (iconType) {
+    case 'planning':
+      return (
+        <svg {...iconProps}>
+          {/* Lightbulb/Planning icon */}
+          <path d="M24 6C19 6 15 10 15 15c0 2.5 1 4.5 2.5 6L17 24h14l-0.5-3c1.5-1.5 2.5-3.5 2.5-6 0-5-4-9-9-9z" />
+          <path d="M20 26h8M20 30h8M22 34h4" />
+          <circle cx="24" cy="38" r="1.5" />
+        </svg>
+      );
+    case 'development':
+      return (
+        <svg {...iconProps}>
+          {/* Code/Development icon */}
+          <path d="M16 20l-5-5 5-5M32 20l5-5-5-5M22 15l4 10" strokeWidth="1.5" />
+          <rect x="10" y="8" width="28" height="32" rx="2" opacity="0.15" />
+        </svg>
+      );
+    case 'testing':
+      return (
+        <svg {...iconProps}>
+          {/* Checkmark/Testing icon */}
+          <circle cx="24" cy="24" r="14" strokeWidth="1.5" />
+          <path d="M18 24l3 3 6-6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M16 14h16M16 20h14M16 26h16M16 32h14" opacity="0.25" strokeWidth="1" />
+        </svg>
+      );
+    default:
+      return (
+        <svg {...iconProps}>
+          <rect x="12" y="6" width="24" height="36" rx="3" />
+          <circle cx="18" cy="16" r="1.5" fill={color} />
+          <path d="M22 16h8M18 21h12M18 26h8" />
+          <path d="M28 14l4-2v4l-4 2" />
+        </svg>
+      );
+  }
 }
 
 function PentagonShape({ variant, children }) {
@@ -133,7 +166,7 @@ function SectionWorkProcess() {
               <Col key={step.title} xs={12} md={4} lg={4} className="section-work-process__step-col">
                 <div className="section-work-process__step">
                   <PentagonShape variant={step.variant}>
-                    <ProcessIcon variant={step.variant} />
+                    <ProcessIcon variant={step.variant} iconType={step.iconType} />
                   </PentagonShape>
                   <h3 className="section-work-process__step-title">{step.title}</h3>
                   <p className="section-work-process__step-desc mb-0">{step.description}</p>

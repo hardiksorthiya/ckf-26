@@ -1,6 +1,7 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import logoImg from '../assets/images/logo-ckf.webp';
+import isoImg from '../assets/images/iso.svg';
 import './css/Footer.css';
 
 const servicesList = [
@@ -63,7 +64,7 @@ function Footer() {
                 </p>
               </div>
             </Col>
-            <Col xs="12" sm="6" lg="3">
+            <Col xs="12" sm="6" lg="2">
               <h6 className="footer-heading">Services</h6>
               <ul className="footer-links">
                 {servicesList.map((item) => (
@@ -73,15 +74,26 @@ function Footer() {
                 ))}
               </ul>
             </Col>
-            <Col xs="12" sm="6" lg="3">
-              <h6 className="footer-heading">Services</h6>
+            
+            <Col xs="12" sm="6" lg="2">
+              <h6 className="footer-heading">Information</h6>
               <ul className="footer-links">
-                {servicesList.map((item) => (
-                  <li key={`dup-${item}`}>
-                    <Link to="/services">{item}</Link>
-                  </li>
-                ))}
-              </ul>
+                    <li><Link to="/contact">Contact</Link></li>
+                    <li><Link to="/about">About Us</Link></li>
+                    <li><Link to="/career">Career</Link></li>
+                    <li><Link to="/case-study">Case Study</Link></li>
+                  </ul>
+                </Col>
+                <Col xs="12" sm="6" lg="2">
+              <h6 className="footer-heading">Policies</h6>
+              
+                  <ul className="footer-links">
+                    <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+                    <li><Link to="/recruitment-privacy-policy">Recruitment Privacy Policy</Link></li>
+                    <li><Link to="/cookies">Cookies</Link></li>
+                    <li><Link to="/feedback">Feedback</Link></li>
+                    <li><Link to="/security">Security</Link></li>
+                  </ul>
             </Col>
             <Col xs="12" md="6" lg="3">
               <h6 className="footer-heading">Contact</h6>
@@ -105,9 +117,8 @@ function Footer() {
           <Row className="align-items-center">
             <Col xs="12" md="6" className="footer-iso-wrap">
               <div className="footer-iso-badge">
-                <span className="footer-iso-title">ISO</span>
-                <span className="footer-iso-num">9001 2015</span>
-                <span className="footer-iso-cert">CERTIFIED</span>
+                <img src={isoImg} alt="ISO 9001 2015 Certified" className="footer-iso-img" />
+                
               </div>
             </Col>
             <Col xs="12" md="6" className="footer-social-wrap">

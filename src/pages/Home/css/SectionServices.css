@@ -32,12 +32,13 @@ section.section-services:after {
 }
 
 .section-services__subtitle {
-  font-size: 0.9375rem;
+  font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
   color: #6b7280;
   margin: 0;
   max-width: 480px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 1rem;
 }
 
 /* Center area with circular layout */
@@ -47,10 +48,12 @@ section.section-services:after {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem 0;
+  padding: 3rem 1rem;
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
+  --inner-radius: 370px;
+  --outer-radius: 527px;
 }
 
 /* Center image placeholder */
@@ -58,12 +61,28 @@ section.section-services:after {
   position: absolute;
   width: 1052px;
   height: 1052px;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 section.section-services__map {
-  margin-top: -30%;
+  margin-top: -35%;
   margin-bottom: -8%;
   z-index: 1;
+  padding: 0 1rem;
+}
+
+.section-services__map-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.section-services__map-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .section-services__center-placeholder {
@@ -78,12 +97,19 @@ section.section-services__map {
 .section-services__cloud-icon {
   position: relative;
   z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.section-services__cloud-icon svg {
+.section-services__cloud-icon-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  max-width: 280px;
+  max-height: 280px;
 }
 
 .section-services__radial-lines {
@@ -124,14 +150,248 @@ section.section-services__map {
   background: #fff;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   border: 2px solid;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: box-shadow 0.2s ease;
   margin-left: -44px;
   margin-top: -44px;
   z-index: 2;
+  will-change: transform;
+  animation: floatBubbleAnimation 3s ease-in-out infinite;
+}
+
+/* Base positioning is handled by animations above */
+
+/* Laptop (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .section-services__center {
+    min-height: 900px;
+    padding: 2.5rem 1rem;
+    --inner-radius: 300px;
+    --outer-radius: 420px;
+  }
+  
+  .section-services__center-image {
+    width: 840px;
+    height: 840px;
+  }
+  
+  .section-services__radial-lines {
+    width: 840px;
+    height: 840px;
+    margin: -420px 0 0 -420px;
+  }
+  
+  .section-services__radial-lines::before {
+    width: 600px;
+    height: 600px;
+    margin: -300px 0 0 -300px;
+  }
+  
+  .section-services__bubble {
+    width: 92px;
+    height: 92px;
+    margin-left: -46px;
+    margin-top: -46px;
+  }
+  
+  .section-services__bubble-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .section-services__bubble-label {
+    font-size: 0.7rem;
+  }
+  
+  .section-services__cloud-icon-img {
+    max-width: 180px;
+    max-height: 180px;
+  }
+}
+
+/* Large Desktop (1200px and above) */
+@media (min-width: 1200px) {
+  .section-services__center {
+    --inner-radius: 370px;
+    --outer-radius: 527px;
+  }
 }
 
 .section-services__bubble:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  animation-play-state: paused;
+}
+
+.section-services__bubble:hover .section-services__bubble-icon {
+  animation-play-state: paused;
+}
+
+/* Animated GIF-like effects for icons */
+@keyframes floatAnimation {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseAnimation {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+@keyframes bounceAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-5px);
+  }
+  75% {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes shakeAnimation {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  75% {
+    transform: translateX(3px) rotate(2deg);
+  }
+}
+
+@keyframes glowAnimation {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px currentColor);
+  }
+  50% {
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+}
+
+/* Floating animation keyframes for bubbles */
+@keyframes floatBubbleAnimation {
+  0%, 100% {
+    transform: rotate(var(--bubble-angle, 0deg)) translateY(calc(-1 * var(--inner-radius, 370px))) rotate(calc(-1 * var(--bubble-angle, 0deg))) translateY(0px);
+  }
+  50% {
+    transform: rotate(var(--bubble-angle, 0deg)) translateY(calc(-1 * var(--inner-radius, 370px))) rotate(calc(-1 * var(--bubble-angle, 0deg))) translateY(-8px);
+  }
+}
+
+.section-services__bubble--outer {
+  animation: floatBubbleOuterAnimation 3s ease-in-out infinite;
+}
+
+@keyframes floatBubbleOuterAnimation {
+  0%, 100% {
+    transform: rotate(var(--bubble-angle, 0deg)) translateY(calc(-1 * var(--outer-radius, 527px))) rotate(calc(-1 * var(--bubble-angle, 0deg))) translateY(0px);
+  }
+  50% {
+    transform: rotate(var(--bubble-angle, 0deg)) translateY(calc(-1 * var(--outer-radius, 527px))) rotate(calc(-1 * var(--bubble-angle, 0deg))) translateY(-8px);
+  }
+}
+
+.section-services__bubble:nth-child(odd) {
+  animation-delay: 0.5s;
+}
+
+.section-services__bubble:nth-child(even) {
+  animation-delay: 1s;
+}
+
+/* Icon animations - GIF-like effects */
+.section-services__bubble-icon {
+  animation: pulseAnimation 2s ease-in-out infinite;
+}
+
+.section-services__bubble-icon svg {
+  animation: glowAnimation 2s ease-in-out infinite;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+/* Specific animations for different icon types */
+.section-services__bubble-icon[data-icon="shield"] svg {
+  animation: pulseAnimation 1.5s ease-in-out infinite, glowAnimation 2s ease-in-out infinite;
+}
+
+.section-services__bubble-icon[data-icon="cloud"] svg {
+  animation: floatAnimation 2s ease-in-out infinite, glowAnimation 2.5s ease-in-out infinite;
+}
+
+.section-services__bubble-icon[data-icon="building"] svg {
+  animation: bounceAnimation 2.5s ease-in-out infinite;
+}
+
+.section-services__bubble-icon[data-icon="ai"] svg {
+  animation: rotateAnimation 4s linear infinite, glowAnimation 1.5s ease-in-out infinite;
+}
+
+.section-services__bubble-icon[data-icon="deploy"] svg {
+  animation: rotateAnimation 3s linear infinite, pulseAnimation 2s ease-in-out infinite;
+}
+
+.section-services__bubble-icon[data-icon="servers"] svg {
+  animation: pulseAnimation 1.8s ease-in-out infinite;
+}
+
+.section-services__bubble-icon[data-icon="envelope"] svg {
+  animation: bounceAnimation 2s ease-in-out infinite;
+}
+
+.section-services__bubble-icon[data-icon="palette"] svg {
+  animation: rotateAnimation 5s linear infinite, glowAnimation 2s ease-in-out infinite;
+}
+
+.section-services__bubble-icon[data-icon="megaphone"] svg {
+  animation: shakeAnimation 1.5s ease-in-out infinite;
+}
+
+/* Hover effects for icons */
+.section-services__bubble:hover .section-services__bubble-icon svg {
+  animation: rotateAnimation 0.5s linear infinite, glowAnimation 0.5s ease-in-out infinite;
+  transform: scale(1.2);
+}
+
+.section-services__bubble:hover {
+  transform: rotate(var(--bubble-angle, 0deg)) translateY(calc(-1 * var(--inner-radius, 370px))) rotate(calc(-1 * var(--bubble-angle, 0deg))) scale(1.05) !important;
+}
+
+.section-services__bubble--outer:hover {
+  transform: rotate(var(--bubble-angle, 0deg)) translateY(calc(-1 * var(--outer-radius, 527px))) rotate(calc(-1 * var(--bubble-angle, 0deg))) scale(1.05) !important;
+}
+
+/* Center cloud icon animation */
+.section-services__cloud-icon-img {
+  animation: floatAnimation 3s ease-in-out infinite, pulseAnimation 2.5s ease-in-out infinite;
+}
+
+.section-services__radial-lines {
+  animation: rotateAnimation 20s linear infinite;
+}
+
+.section-services__radial-lines::before {
+  animation: rotateAnimation 15s linear infinite reverse;
 }
 
 .section-services__bubble--red {
@@ -174,44 +434,212 @@ section.section-services__map {
   padding: 0 4px;
 }
 
-@media (min-width: 576px) {
-  .section-services__bubble {
-    width: 96px;
-    height: 96px;
-    margin-left: -48px;
-    margin-top: -48px;
+/* Tablet and Small Desktop (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .section-services__center {
+    min-height: 800px;
+    padding: 2rem 1rem;
+    --inner-radius: 250px;
+    --outer-radius: 350px;
   }
+  
+  .section-services__center-image {
+    width: 700px;
+    height: 700px;
+  }
+  
+  .section-services__radial-lines {
+    width: 700px;
+    height: 700px;
+    margin: -350px 0 0 -350px;
+  }
+  
+  .section-services__radial-lines::before {
+    width: 500px;
+    height: 500px;
+    margin: -250px 0 0 -250px;
+  }
+  
+  .section-services__bubble {
+    width: 90px;
+    height: 90px;
+    margin-left: -45px;
+    margin-top: -45px;
+  }
+  
   .section-services__bubble-label {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
+  }
+  
+  .section-services__cloud-icon-img {
+    max-width: 150px;
+    max-height: 150px;
   }
 }
 
-@media (max-width: 767px) {
+/* Mobile Landscape and Small Tablets (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
   .section-services__center {
-    min-height: 400px;
+    min-height: 600px;
+    padding: 2rem 1rem;
+    --inner-radius: 175px;
+    --outer-radius: 250px;
   }
+  
   .section-services__center-image {
-    width: 200px;
-    height: 150px;
+    width: 500px;
+    height: 500px;
   }
+  
+  .section-services__radial-lines {
+    width: 500px;
+    height: 500px;
+    margin: -250px 0 0 -250px;
+  }
+  
+  .section-services__radial-lines::before {
+    width: 350px;
+    height: 350px;
+    margin: -175px 0 0 -175px;
+  }
+  
+  .section-services__bubble {
+    width: 80px;
+    height: 80px;
+    margin-left: -40px;
+    margin-top: -40px;
+  }
+  
+  .section-services__bubble-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .section-services__bubble-label {
+    font-size: 0.65rem;
+  }
+  
+  .section-services__cloud-icon-img {
+    max-width: 120px;
+    max-height: 120px;
+  }
+  
+  section.section-services__map {
+    margin-top: -30%;
+    padding: 0 0.5rem;
+  }
+}
+
+/* Mobile Portrait (up to 575px) */
+@media (max-width: 575px) {
+  .section-services__center {
+    min-height: 500px;
+    padding: 1.5rem 0.5rem;
+    --inner-radius: 100px;
+    --outer-radius: 160px;
+  }
+  
+  .section-services__center-image {
+    width: 320px;
+    height: 320px;
+  }
+  
   .section-services__radial-lines {
     width: 320px;
     height: 320px;
     margin: -160px 0 0 -160px;
   }
+  
   .section-services__radial-lines::before {
     width: 200px;
     height: 200px;
     margin: -100px 0 0 -100px;
   }
+  
   .section-services__bubble {
-    width: 72px;
-    height: 72px;
-    margin-left: -36px;
-    margin-top: -36px;
+    width: 64px;
+    height: 64px;
+    margin-left: -32px;
+    margin-top: -32px;
   }
+  
+  .section-services__bubble-icon {
+    margin-bottom: 0.15rem;
+  }
+  
+  .section-services__bubble-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+  
   .section-services__bubble-label {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
+    padding: 0 2px;
+    line-height: 1.1;
+  }
+  
+  .section-services__cloud-icon-img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  
+  section.section-services__map {
+    margin-top: -63%;
+    margin-bottom: -5%;
+    padding: 0 0.5rem;
+  }
+  
+  .section-services__subtitle {
+    font-size: 0.875rem;
+  }
+}
+
+/* Extra Small Mobile (up to 375px) */
+@media (max-width: 375px) {
+  .section-services__center {
+    min-height: 450px;
+    padding: 1rem 0.5rem;
+    --inner-radius: 90px;
+    --outer-radius: 140px;
+  }
+  
+  .section-services__center-image {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .section-services__radial-lines {
+    width: 280px;
+    height: 280px;
+    margin: -140px 0 0 -140px;
+  }
+  
+  .section-services__radial-lines::before {
+    width: 180px;
+    height: 180px;
+    margin: -90px 0 0 -90px;
+  }
+  
+  .section-services__bubble {
+    width: 56px;
+    height: 56px;
+    margin-left: -28px;
+    margin-top: -28px;
+  }
+  
+  .section-services__bubble-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .section-services__bubble-label {
+    font-size: 0.5rem;
+    padding: 0 1px;
+  }
+  
+  .section-services__cloud-icon-img {
+    max-width: 80px;
+    max-height: 80px;
   }
 }
 
